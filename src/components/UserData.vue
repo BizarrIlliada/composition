@@ -18,7 +18,21 @@
 </template>
 
 <script setup>
-import { computed, defineProps, defineEmits, defineSlots, useAttrs, useSlots, inject } from 'vue';
+import {
+  computed,
+  defineProps,
+  defineEmits,
+  defineSlots,
+  useAttrs,
+  useSlots,
+  inject,
+  onBeforeMount,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated,
+  onBeforeUnmount,
+  onUnmounted,
+} from 'vue';
 
 const props = defineProps({
   name: {
@@ -62,6 +76,24 @@ function myEmit() {
 
 const age = inject('age');
 
+onBeforeMount(() => {
+  console.log('onBeforeMount');
+});
+onMounted(() => {
+  console.log('onMounted');
+});
+onBeforeUpdate(() => {
+  console.log('onBeforeUpdate');
+});
+onUpdated(() => {
+  console.log('onUpdated');
+});
+onBeforeUnmount(() => {
+  console.log('onBeforeUnmount');
+});
+onUnmounted(() => {
+  console.log('onUnmounted');
+});
 </script>
 
 <!--

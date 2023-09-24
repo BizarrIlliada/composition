@@ -17,8 +17,15 @@
       </p>
     </div>
     <p>{{ 'Dogs gender is ' + gender }}</p>
-    <img height="200" src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQTIg6tKhqwokMCnry9-wROugbZ1GrgDbAz3dOwgGkHGAFFFuRmzCILAkDx9HKufB2kKO726I6fWLMcgsQ" alt="Dog">
-    <UserData 
+    <img
+      height="200"
+      src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQTIg6tKhqwokMCnry9-wROugbZ1GrgDbAz3dOwgGkHGAFFFuRmzCILAkDx9HKufB2kKO726I6fWLMcgsQ"
+      alt="Dog"
+    >
+    <br>
+    <button @click="toggleChildrenVisibility">Hide children</button>
+    <UserData
+      v-if="isChildrenVisible"
       :name="name"
       :lastName="lastName"
       class="test"
@@ -97,6 +104,12 @@ function setLastName() {
 }
 
 provide('age', age);
+
+const isChildrenVisible = ref(true);
+
+function toggleChildrenVisibility() {
+  isChildrenVisible.value = !isChildrenVisible.value;
+}
 </script>
 
 <style>
