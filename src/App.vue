@@ -20,14 +20,25 @@
     <img height="200" src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQTIg6tKhqwokMCnry9-wROugbZ1GrgDbAz3dOwgGkHGAFFFuRmzCILAkDx9HKufB2kKO726I6fWLMcgsQ" alt="Dog">
     <UserData 
       :name="name"
-      :age="age"
       :lastName="lastName"
-    />
+      class="test"
+      fallThroughAttr="someText"
+      @myEmittedFunction="console.log($event)"
+    >
+      <template #title>
+        Title
+      </template>
+      <template #subtitle>
+        <label for="test">Test</label>
+        <input id="test" type="text" placeholder="Subtitle">
+      </template>
+      <div>{{ 123 }}</div>
+    </UserData>
   </section>
 </template>
 
 <script setup>
-import { ref, reactive, isReactive, isRef, toRefs, computed, isReadonly, watch } from 'vue';
+import { ref, reactive, isReactive, isRef, toRefs, computed, isReadonly, watch, provide } from 'vue';
 
 import UserData from './components/UserData.vue';
 
@@ -84,6 +95,8 @@ watch([age, gender], (newValues, oldValues) => {
 function setLastName() {
   lastName.value = lastNameInput.value.value;
 }
+
+provide('age', age);
 </script>
 
 <style>
